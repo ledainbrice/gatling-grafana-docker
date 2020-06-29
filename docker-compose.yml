@@ -35,7 +35,7 @@ services:
     volumes:
       - ./grafana/provisioning:/etc/grafana/provisioning
       - ./config.ini:/etc/grafana/config.ini
-      - ./dashboards:/var/lib/grafana/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
     
   influxdb:
     image: influxdb:2.3.0
