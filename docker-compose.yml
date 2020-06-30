@@ -43,6 +43,8 @@ services:
       context: influxdb/1.2.0-alpine
     networks:
       - gatling_network
+    volumes:
+      - ./influxdb/storage:/var/lib/influxdb
     ports:
       - "8083:8083"
       - "8086:8086"
