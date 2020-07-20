@@ -9,7 +9,10 @@ app.get('/', (req, res) => {
   /*setTimeout(function() {
     res.send('Hello World -> ' + counter);
   }, counter % 10000);*/
-  res.send('Hello World -> ' + counter);
+  res.json(
+    {
+      "message": 'Hello World -> ' + counter
+    });
 });
 
 app.get('/error', (req, res) => {
