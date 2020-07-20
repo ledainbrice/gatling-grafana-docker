@@ -14,7 +14,7 @@ services:
   sample-service2:
     build:
       context: ./sample-service2
-    working_dir: /go/src/sample-service2
+    working_dir: /go/src/sample-service2/app
     container_name: webservice-golang
     volumes:
       - "./sample-service2:/go/src/sample-service2"
@@ -27,7 +27,7 @@ services:
     scale: 2 # Scale to see the result of multiple nodes
     build:
       context: gatling/2.3.0
-    command: [-s, sample.SampleService]
+    command: [-s, sample.SampleService2]
     networks:
       - gatling_network
     depends_on:

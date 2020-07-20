@@ -7,7 +7,7 @@ RUN mkdir -p $$GOPATH/bin && \
     go get github.com/pilu/fresh
 # define work directory
 ADD . /go/src/sample-service2
-WORKDIR /go/src/sample-service2
+WORKDIR /go/src/sample-service2/app
 # serve the app
 EXPOSE 4000
 CMD go get && fresh -c runner.conf main.go
