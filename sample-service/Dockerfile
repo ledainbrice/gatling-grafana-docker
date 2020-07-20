@@ -1,19 +1,17 @@
-FROM node:12
+FROM node:10-slim
 
-# Create app directory
-# WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
+RUN npm install -g nodemon
+
 COPY package*.json ./
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
+RUN npm ci \
+ && npm cache clean --force \
+ && mv /app/node_modules /node_modules
 
-# Bundle app source
 COPY . .
 
 EXPOSE 8000
-CMD [ "node", "server.js" ]
+
+CMD ["npm", "start"]

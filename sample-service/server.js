@@ -6,9 +6,15 @@ var counter = 0;
 
 app.get('/', (req, res) => {
   counter++
-  setTimeout(function() {
+  /*setTimeout(function() {
     res.send('Hello World -> ' + counter);
-  }, counter);
+  }, counter % 10000);*/
+  res.send('Hello World -> ' + counter);
+});
+
+app.get('/error', (req, res) => {
+  res.status(500);
+  res.send('Test error 500');
 });
 
 app.listen(PORT);

@@ -3,12 +3,25 @@ services:
   sample-service:
     build:
       context: ./sample-service
-      dockerfile: Dockerfile
+    command: npm start
     container_name: webservice-nodejs
     networks:
       - gatling_network
+    volumes:
+      - ./sample-service:/app
     ports:
       - "8000:8000"
+  sample-service2:
+    build:
+      context: ./sample-service2
+    working_dir: /go/src/sample-service2
+    container_name: webservice-golang
+    volumes:
+      - "./sample-service2:/go/src/sample-service2"
+    networks:
+      - gatling_network
+    ports:
+      - "4000:4000"
   gatling-runner:
     image: gatling:2.3.0
     scale: 2 # Scale to see the result of multiple nodes
